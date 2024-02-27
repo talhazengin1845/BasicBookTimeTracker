@@ -1,0 +1,54 @@
+﻿@model Book
+
+
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            background-color: lightgreen;
+        }
+
+        th {
+            background-color: wheat;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Kitap Kullanım Süresi</h1>
+    <table>
+
+        <tr>
+            <td>Name</td>
+            <td>@Model.bookName</td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td>@Model.author</td>
+        </tr>
+        <tr>
+            <td>Page Number</td>
+            <td>@Model.pageNumber</td>
+        </tr>
+        @{
+            double remainingDays = Math.Round(Model.remainingTime.TotalDays, 1);
+            string color = remainingDays < 5 ? "red" : "green";
+        }
+        <tr style="background-color :@color">
+            <td>Due Date</td>
+
+            <td>@Math.Round(@Model.remainingTime.TotalDays, 1) gün kaldı</td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+</body>
+</html>
